@@ -29,7 +29,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:padding="10dp"
             android:gravity="center_vertical">
             <LinearLayout
                 android:orientation="horizontal"
@@ -43,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:text="조효경"
                     android:textSize="20dp"
-                    android:textColor="@color/card"
+                    android:textColor="@color/card_900"
                     android:textStyle="bold"
                     android:paddingRight="10dp"
                     />
@@ -54,6 +53,7 @@
                     android:text="팀장"
                     android:textSize="17dp"
                     android:textStyle="bold"
+                    android:textColor="@color/card_700"
                     />
             </LinearLayout>
             <LinearLayout
@@ -63,11 +63,11 @@
                 android:paddingBottom="7dp"
                 >
                 <TextView
-                    android:layout_width="40dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:text="Co."
                     android:textSize="15dp"
-                    android:textColor="@color/card"
+                    android:textColor="@color/card_900"
                     android:textStyle="bold"
                     />
                 <TextView
@@ -76,6 +76,7 @@
                     android:layout_height="wrap_content"
                     android:text="너의공간나의공간"
                     android:textSize="15dp"
+                    android:textColor="@color/card_700"
                     />
             </LinearLayout>
             <LinearLayout
@@ -85,18 +86,19 @@
                 android:paddingBottom="7dp"
                 >
                 <TextView
-                    android:layout_width="40dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:text="Tel. "
+                    android:text="Mobile. "
                     android:textSize="15dp"
-                    android:textColor="@color/card"
+                    android:textColor="@color/card_900"
                     android:textStyle="bold"
                     />
                 <TextView
-                    android:id="@+id/tv_card_tel"
+                    android:id="@+id/tv_card_mobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="010-0000-0000 "
+                    android:textColor="@color/card_700"
                     android:textSize="15dp"
                     />
             </LinearLayout>

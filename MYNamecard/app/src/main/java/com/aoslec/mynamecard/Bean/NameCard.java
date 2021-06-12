@@ -24,7 +24,7 @@ public class NameCard {
     Date updateDate;
 
     // NameCardList
-    public NameCard(String namecardFilePath, String name, String company, String jobPosition, String mobile) {
+    public NameCard(String namecardFilePath, String name, String jobPosition, String company, String mobile) {
         this.namecardFilePath = namecardFilePath;
         this.name = name;
         this.company = company;

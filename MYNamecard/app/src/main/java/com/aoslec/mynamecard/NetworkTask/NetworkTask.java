@@ -3,6 +3,7 @@ package com.aoslec.mynamecard.NetworkTask;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.aoslec.mynamecard.Bean.NameCard;
 
@@ -139,6 +140,7 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
                 String namecardFilePath = jsonObject1.getString("namecardFilePath");
+                Log.v("SelectNamecard", "namecardFilePath : " + namecardFilePath);
                 String name = jsonObject1.getString("name");
                 String jobPosition = jsonObject1.getString("jobPosition");
                 String company = jsonObject1.getString("company");

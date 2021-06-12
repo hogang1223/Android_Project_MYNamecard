@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="50dp"
+    android:gravity="center">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="43dp"
+        android:text="MYNameCard"
+        android:textStyle="bold|italic"
+        android:gravity="center_horizontal"
+        android:textColor="@color/card_900"
+        android:padding="20dp"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:hint="ID"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/card_900"
+        android:text="user01"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:hint="PW"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/card_900"
+        android:inputType="textPassword"
+        android:text="user01"
+        />
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Login"
+        android:backgroundTint="@color/card_900"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingHorizontal="5dp"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="아이디 찾기"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="@color/card_700"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="비밀번호 찾기"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="@color/card_700"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:text="회원가입"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="@color/card_700"
+            android:gravity="right"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.aoslec.mynamecard.Adapter.NameCardAdapter;
@@ -39,21 +40,29 @@ public class NameCardListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        connectGetData();
+    }
+
+    public void connectGetData(){
         try {
-            NetworkTask networkTask = new NetworkTask(MainActivity.this, urlAddr);
-            Object obj = networkTask.execute().get();
-            nameCards = (ArrayList<NameCard>) obj;
+                NetworkTask networkTask = new NetworkTask(NameCardListActivity.this, urlAddr, "select");
+                Object obj = networkTask.execute().get();
+                nameCards = (ArrayList<NameCard>) obj;
 
-            adapter = new NameCardAdapter(nameCards);
-            recyclerView.setAdapter(adapter);
+                adapter = new NameCardAdapter(nameCards);
+                recyclerView.setAdapter(adapter);
 
-            helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
-            helper.attachToRecyclerView(recyclerView);
+                helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
+                helper.attachToRecyclerView(recyclerView);
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
     }
 }

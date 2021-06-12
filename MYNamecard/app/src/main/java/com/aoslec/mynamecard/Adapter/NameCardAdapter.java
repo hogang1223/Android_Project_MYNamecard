@@ -1,5 +1,6 @@
 package com.aoslec.mynamecard.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView name, jobPosition, company, tel;
+        public TextView name, jobPosition, company, mobile;
         public WebView webView;
 
         public ViewHolder(View itemView) {
@@ -36,7 +37,7 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
             name = itemView.findViewById(R.id.tv_card_name);
             jobPosition = itemView.findViewById(R.id.tv_card_jobPosition);
             company = itemView.findViewById(R.id.tv_card_company);
-            tel = itemView.findViewById(R.id.tv_card_tel);
+            mobile = itemView.findViewById(R.id.tv_card_mobile);
 
             // Web Setting
             WebSettings webSettings = webView.getSettings();
@@ -57,20 +58,26 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull NameCardAdapter.ViewHolder holder, int position) {
         holder.webView.loadData(htmlData(data.get(position).getNamecardFilePath()), "text/html", "UTF-8");
+//        holder.webView.loadUrl("http://192.168.219.105:8080/first/Arithmetic.jsp");
         holder.name.setText(data.get(position).getName());
         holder.jobPosition.setText(data.get(position).getJobPosition());
         holder.company.setText(data.get(position).getCompany());
-        holder.tel.setText(data.get(position).getMobile());
+        holder.mobile.setText(data.get(position).getMobile());
     }
 
     // image webView에 띄워주기 위해 html 사용
     private String htmlData(String location){
 
+        Log.v("SelectNamecard", "start htmldata - location : " + location);
+
         String image = "<html><head>"+
                 "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />"+
-                "<head><body>"+
-                "<img src=\"192.168.219.105:8080/first/" + location + "\" width =\"180px\" height=\"auto\">" +
+                "</head><body>"+
+                "<img src=\"http://192.168.219.105:8080/first/" + location + "\" width =\"180px\" height=\"110px\">" +
                 "</body></html>";
+
+        Log.v("SelectNamecard", "image : " + image);
+
         return image;
     }
 

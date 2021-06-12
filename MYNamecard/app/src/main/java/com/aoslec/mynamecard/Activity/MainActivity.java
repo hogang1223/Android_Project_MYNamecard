@@ -4,19 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.aoslec.mynamecard.R;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    EditText edtIP;
-    Button insertBtn, updateBtn, deleteBtn, selectAllBtn ;
-
+    LinearLayout linear_main, linear_login;
+    Button btn_main_login, login_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,16 +25,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addListener(){
-        edtIP = findViewById(R.id.edt_ip);
-        insertBtn = findViewById(R.id.btn_insert);
-        updateBtn = findViewById(R.id.btn_update);
-        deleteBtn = findViewById(R.id.btn_delete);
-        selectAllBtn = findViewById(R.id.btn_selectA);
 
-        insertBtn.setOnClickListener(onClickListener);
-        updateBtn.setOnClickListener(onClickListener);
-        deleteBtn.setOnClickListener(onClickListener);
-        selectAllBtn.setOnClickListener(onClickListener);
+        linear_main = findViewById(R.id.linear_main);
+        linear_login = findViewById(R.id.linear_login);
+        btn_main_login = findViewById(R.id.btn_main_login);
+        login_btn = findViewById(R.id.login_btn);
+
+
+        btn_main_login.setOnClickListener(onClickListener);
+        login_btn.setOnClickListener(onClickListener);
+
 
     }
 
@@ -43,22 +42,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            String tempIp = edtIP.getText().toString();
+            String tempIp = "192.168.219.105";
             Intent intent = null;
 
             switch (v.getId()){
-//                case R.id.btn_insert:
-//                    intent = new Intent(MainActivity.this, InsertActivity.class);
-//                    intent.putExtra("macIP", tempIp);
-//                    startActivity(intent);
-//                    break;
-                case R.id.btn_update:
-                    Toast.makeText(MainActivity.this, "검색 후 선택을 짧게 누르면 수정화면으로 이동합니다.", Toast.LENGTH_LONG).show();
+                case R.id.btn_main_login:
+                    linear_main.setVisibility(View.INVISIBLE);
+                    linear_login.setVisibility(View.VISIBLE);
                     break;
-                case R.id.btn_delete:
-                    Toast.makeText(MainActivity.this, "검색 후 선택을 길게 누르면 삭제화면으로 이동합니다.", Toast.LENGTH_LONG).show();
-                    break;
-                case R.id.btn_selectA:
+                case R.id.login_btn:
                     intent = new Intent(MainActivity.this, NameCardListActivity.class);
                     intent.putExtra("macIP", tempIp);
                     startActivity(intent);
