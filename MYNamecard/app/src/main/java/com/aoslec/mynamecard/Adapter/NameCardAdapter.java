@@ -167,6 +167,8 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION){
                         intent = new Intent(v.getContext(), DetailViewActivity.class);
+
+
                         intent.putExtra("macIP", macIP);
                         intent.putExtra("namecardNo", data.get(position).getNamecardNo());
                         intent.putExtra("groupNo", data.get(position).getGroup_groupNo());
@@ -183,6 +185,7 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
                         intent.putExtra("memo", data.get(position).getMemo());
                         intent.putExtra("groupName", data.get(position).getGroupName());
                         v.getContext().startActivity(intent);
+
 
                     }
                 }
