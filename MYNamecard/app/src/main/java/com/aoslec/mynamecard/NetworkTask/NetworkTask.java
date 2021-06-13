@@ -69,45 +69,61 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
         BufferedReader bufferedReader = null;
         String result = null;
 
-        try{
+        try {
             URL url = new URL(mAddr);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setConnectTimeout(10000);
 
-            if(httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
+            if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = httpURLConnection.getInputStream();
                 inputStreamReader = new InputStreamReader(inputStream);
                 bufferedReader = new BufferedReader(inputStreamReader);
 
-                while(true){
+                while (true) {
                     String strline = bufferedReader.readLine();
-                    if(strline == null) break;
+                    if (strline == null) break;
                     stringBuffer.append(strline + "\n");
 
                 }
-                if(where.equals("select")) {
-                    parserSelect(stringBuffer.toString());
-                }else{
-                    result = parserAction(stringBuffer.toString());
+                switch (where) {
+                    case "select":
+                        parserSelect(stringBuffer.toString());
+                        break;
+                    default:
+                        result = parserAction(stringBuffer.toString());
+                        break;
+
                 }
             }
 
-        }catch (Exception e){
+//                if(where.equals("select")) {
+//                    parserSelect(stringBuffer.toString());
+//                }else{
+//                    result = parserAction(stringBuffer.toString());
+//                }
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            try{
-                if(bufferedReader != null) bufferedReader.close();
-                if(inputStreamReader != null) inputStreamReader.close();
-                if(inputStream != null) inputStream.close();
-            }catch (Exception e){
+        } finally {
+            try {
+                if (bufferedReader != null) bufferedReader.close();
+                if (inputStreamReader != null) inputStreamReader.close();
+                if (inputStream != null) inputStream.close();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if(where.equals("select")){
-            return nameCards;
-        }else{
-            return result;
+
+        switch (where) {
+            case "select":
+                return nameCards;
+            default:
+                return result;
         }
+//        if(where.equals("select")){
+//            return nameCards;
+//        }else{
+//            return result;
+//        }
     }
 
     private String parserAction(String str){
@@ -129,25 +145,29 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
             JSONObject jsonObject = new JSONObject(str);
             JSONArray jsonArray = new JSONArray(jsonObject.getString("namecards_info"));
             nameCards.clear();
-
-            /*
-            SELECT r.namecardFilePath, r.name, r.jobPosition, r.company, r.mobile
-            FROM revise r, namecard n
-            WHERE n.user_id = 'user01' AND n.namecardNo = r.namecard_namecardNo
-            AND n.deleteDate is null AND n.trashcan = 0;
-             */
-
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                int namecardNo = jsonObject1.getInt("namecardNo");
+                int group_groupNo = jsonObject1.getInt("groupNo");
                 String namecardFilePath = jsonObject1.getString("namecardFilePath");
-                Log.v("SelectNamecard", "namecardFilePath : " + namecardFilePath);
                 String name = jsonObject1.getString("name");
                 String jobPosition = jsonObject1.getString("jobPosition");
+                String groupName = jsonObject1.getString("groupName");
                 String company = jsonObject1.getString("company");
+                String dept = jsonObject1.getString("dept");
                 String mobile = jsonObject1.getString("mobile");
+                String tel = jsonObject1.getString("tel");
+                String fax = jsonObject1.getString("fax");
+                String email = jsonObject1.getString("email");
+                String address = jsonObject1.getString("address");
+                String memo = jsonObject1.getString("memo");
+                Log.v("SelectNamecard", "memo : " + memo);
 
-                NameCard nameCard = new NameCard(namecardFilePath, name, jobPosition, company, mobile);
-                nameCards.add(nameCard);
+                NameCard namecard = new NameCard(namecardNo, group_groupNo, namecardFilePath,
+                        name, jobPosition, groupName, company, dept, mobile, tel, fax,
+                        email, address, memo);
+
+                nameCards.add(namecard);
             }
 
         }catch (Exception e){
@@ -155,4 +175,4 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
         }
     }
 
-}
+} // end line

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.aoslec.mynamecard.Adapter.NameCardAdapter;
@@ -22,6 +23,7 @@ public class NameCardListActivity extends AppCompatActivity {
 
     String urlAddr = null;
     String macIP;
+    String userid;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<NameCard> nameCards;
@@ -35,7 +37,9 @@ public class NameCardListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         macIP = intent.getStringExtra("macIP");
-        urlAddr = "http://" + macIP + ":8080/first/namecard_query_all.jsp";
+        userid = intent.getStringExtra("userid");
+        urlAddr = "http://" + macIP + ":8080/first/namecard_query_all.jsp?userid="+userid;
+
 
         recyclerView = findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(this);
@@ -54,15 +58,17 @@ public class NameCardListActivity extends AppCompatActivity {
                 Object obj = networkTask.execute().get();
                 nameCards = (ArrayList<NameCard>) obj;
 
-                adapter = new NameCardAdapter(nameCards);
+                adapter = new NameCardAdapter(nameCards, macIP);
                 recyclerView.setAdapter(adapter);
 
                 helper = new ItemTouchHelper(new ItemTouchHelperCallback(adapter));
                 helper.attachToRecyclerView(recyclerView);
 
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
+
+
 }

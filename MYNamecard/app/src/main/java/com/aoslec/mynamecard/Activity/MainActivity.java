@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.aoslec.mynamecard.Adapter.NameCardAdapter;
 import com.aoslec.mynamecard.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            String tempIp = "192.168.219.105";
+            String tempIp = "172.30.1.19";
+            String userid = "user01";
             Intent intent = null;
 
             switch (v.getId()){
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.login_btn:
                     intent = new Intent(MainActivity.this, NameCardListActivity.class);
                     intent.putExtra("macIP", tempIp);
+                    intent.putExtra("userid", userid);
                     startActivity(intent);
                     break;
             }

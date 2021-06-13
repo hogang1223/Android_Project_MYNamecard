@@ -22,17 +22,36 @@ public class NameCard {
     String address;
     String memo;
     Date updateDate;
+    String groupName;
 
-    // NameCardList
-    public NameCard(String namecardFilePath, String name, String jobPosition, String company, String mobile) {
+    // nameCardList
+    public NameCard(int namecardNo, int group_groupNo, String namecardFilePath,
+                    String name, String jobPosition, String groupName, String company,
+                    String dept, String mobile, String tel, String fax, String email,
+                    String address, String memo) {
+        this.namecardNo = namecardNo;
+        this.group_groupNo = group_groupNo;
         this.namecardFilePath = namecardFilePath;
         this.name = name;
         this.company = company;
+        this.dept = dept;
         this.jobPosition = jobPosition;
         this.mobile = mobile;
+        this.tel = tel;
+        this.fax = fax;
+        this.email = email;
+        this.address = address;
+        this.memo = memo;
+        this.groupName = groupName;
     }
 
+    public String getGroupName() {
+        return groupName;
+    }
 
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
 
     public int getNamecardNo() {
         return namecardNo;
