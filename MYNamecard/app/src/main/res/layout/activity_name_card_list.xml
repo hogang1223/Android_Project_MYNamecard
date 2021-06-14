@@ -18,7 +18,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             app:cardBackgroundColor="@color/black"
             android:clickable="true"
             android:focusable="true"
@@ -35,30 +35,23 @@
                 android:background="@color/white"
                 android:paddingHorizontal="10dp">
 
-                <ImageView
-                    android:id="@+id/iv_namecardlist_menubar"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_launcher_background"
-                    />
                 <EditText
-                    android:id="@+id/edt_namecardlist_search"
+                    android:id="@+id/edt_favorite_search"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="9"
                     android:hint="명함 검색"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textColor="@color/card_900"
                     android:background="@null"
                     android:layout_marginHorizontal="10dp"
                     />
                 <ImageView
-                    android:id="@+id/iv_namecardlist_search"
+                    android:id="@+id/iv_favorite_search"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_launcher_background"
+                    android:src="@drawable/search"
                     />
 
             </LinearLayout>
@@ -85,6 +78,7 @@
             />
     </LinearLayout>
     <Button
+        android:id="@+id/list_btn_insert"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"

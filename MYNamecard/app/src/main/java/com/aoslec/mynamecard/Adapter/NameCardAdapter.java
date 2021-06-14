@@ -119,12 +119,15 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aoslec.mynamecard.Activity.DetailViewActivity;
 import com.aoslec.mynamecard.Bean.NameCard;
+import com.aoslec.mynamecard.NetworkTask.NetworkTask;
 import com.aoslec.mynamecard.R;
 import com.aoslec.mynamecard.common.ItemTouchHelperListener;
 
@@ -132,10 +135,12 @@ import java.util.ArrayList;
 
 public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHolder> implements ItemTouchHelperListener {
 
+    private Context context;
     private ArrayList<NameCard> data = null;
     private String macIP = null;
 
-    public NameCardAdapter(ArrayList<NameCard> data, String macIP){
+    public NameCardAdapter(Context context, ArrayList<NameCard> data, String macIP){
+        this.context = context;
         this.data = data;
         this.macIP = macIP;
     }
@@ -167,8 +172,6 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION){
                         intent = new Intent(v.getContext(), DetailViewActivity.class);
-
-
                         intent.putExtra("macIP", macIP);
                         intent.putExtra("namecardNo", data.get(position).getNamecardNo());
                         intent.putExtra("groupNo", data.get(position).getGroup_groupNo());
@@ -185,8 +188,6 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
                         intent.putExtra("memo", data.get(position).getMemo());
                         intent.putExtra("groupName", data.get(position).getGroupName());
                         v.getContext().startActivity(intent);
-
-
                     }
                 }
             });
@@ -246,5 +247,26 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
     public void onItemSwipe(int position) {
         data.remove(position);
         notifyItemRemoved(position);
+
+        String result = connectFavoriteData(data.get(position).getNamecardNo());
+
+        if(result.equals("1")){
+            notifyItemRemoved(position);
+            Toast.makeText(context, "즐겨찾기에 등록되었습니다.", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "즐겨찾기 등록에 실패 하였습니다.", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private String connectFavoriteData(int namecardNo){
+        String result = null;
+        String urlAddr = "http://" + macIP + ":8080/first/namecardFavoriteUpdate.jsp?namecardNo=" + namecardNo;
+        try {
+            NetworkTask networkTask = new NetworkTask(context, urlAddr, "favorite");
+            Object obj = networkTask.execute().get();
+            result = (String) obj;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
 }

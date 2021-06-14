@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.NameCardListActivity"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardBackgroundColor="@color/black"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <EditText
+                    android:id="@+id/edt_favorite_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:hint="명함 검색"
+                    android:textSize="17dp"
+                    android:textColor="@color/card_900"
+                    android:background="@null"
+                    android:layout_marginHorizontal="10dp"
+                    />
+                <ImageView
+                    android:id="@+id/iv_favorite_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/search"
+                    />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:text="조효경님의 즐겨찾기 명함 목록"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/card_700"
+            android:layout_margin="20dp"
+            android:gravity="bottom"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favorite_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/favorite_btn_insert"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_shape"
+        android:shadowRadius="100"
+        android:text="+"
+        android:textSize="25dp"
+        android:layout_margin="10dp"
+        />
+
+</RelativeLayout>

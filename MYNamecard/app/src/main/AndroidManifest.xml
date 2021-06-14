@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aoslec.mynamecard">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -14,7 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MYNamecard">
-        <activity android:name=".Activity.DetailViewActivity"></activity>
+        <activity android:name=".Activity.TrashCanDetailViewActivity"></activity>
+        <activity android:name=".Activity.TrashCanActivity" />
+        <activity android:name=".Activity.FavoritNameCardActivity" />
+        <activity android:name=".Activity.UpdateNameCardActivity" />
+        <activity android:name=".Activity.imgTest" />
+        <activity android:name=".Activity.InsertNameCardActivity" />
+        <activity android:name=".Activity.DetailViewActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.NameCardListActivity" />
         <activity android:name=".Activity.MainActivity">
@@ -24,6 +35,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <!-- 파일 경로 생성 -->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
     </application>
 
 </manifest>

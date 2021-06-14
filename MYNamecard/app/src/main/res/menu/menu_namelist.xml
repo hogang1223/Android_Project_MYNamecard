@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.aoslec.actionbar.NameCardListActivity">
+
+    <item
+        android:id="@+id/menu_01"
+        android:title="전체보기"
+        />
+    <item
+        android:id="@+id/menu_02"
+        android:title="즐겨찾기"
+        />
+    <item
+        android:id="@+id/menu_03"
+        android:title="휴지통"
+        />
+
+</menu>

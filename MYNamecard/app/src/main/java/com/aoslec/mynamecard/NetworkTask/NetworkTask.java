@@ -142,9 +142,9 @@ public class NetworkTask extends AsyncTask<Integer, String, Object> {
 
     private void parserSelect(String str){
         try{
+            nameCards.clear();
             JSONObject jsonObject = new JSONObject(str);
             JSONArray jsonArray = new JSONArray(jsonObject.getString("namecards_info"));
-            nameCards.clear();
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
                 int namecardNo = jsonObject1.getInt("namecardNo");

@@ -11,6 +11,8 @@ import android.view.View;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aoslec.mynamecard.R;
+
 public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private ItemTouchHelperListener listener;
@@ -50,10 +52,10 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
             float height = (float) itemView.getBottom() - (float) itemView.getTop();
             float width = height / 3;
 
-            p.setColor(Color.parseColor("#50D32F2F"));
+            p.setColor(Color.parseColor("#FF6200EE"));
             RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
             c.drawRect(background,p);
-            icon = BitmapFactory.decodeResource(itemView.getResources(), android.R.drawable.ic_menu_delete);
+            icon = BitmapFactory.decodeResource(itemView.getResources(), R.drawable.favorite);
             RectF icon_dest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
             c.drawBitmap(icon,null,icon_dest,p);
         }

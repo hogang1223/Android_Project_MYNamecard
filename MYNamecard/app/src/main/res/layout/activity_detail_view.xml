@@ -76,7 +76,7 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_jobPosition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -109,19 +109,19 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/message" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/phone" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/mail" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,7 +161,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_company"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_dept"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -230,7 +230,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_tel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_fax"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -276,7 +276,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -299,7 +299,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -322,7 +322,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <TextView
                     android:id="@+id/detail_edt_memo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

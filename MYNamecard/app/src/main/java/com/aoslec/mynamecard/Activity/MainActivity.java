@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            String tempIp = "172.30.1.19";
+            String tempIp = "192.168.219.105";
             String userid = "user01";
             Intent intent = null;
 

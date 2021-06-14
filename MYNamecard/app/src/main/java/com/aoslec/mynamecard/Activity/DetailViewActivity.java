@@ -35,9 +35,8 @@ public class DetailViewActivity extends AppCompatActivity {
 
     Button btnBack, btnDelete, btnUpdate;
     WebView wvFilePath;
-    EditText edtName, edtJobPosition, edtCompany, edtDept, edtMobile, edtTel, edtFax, edtEmail;
-    EditText edtAddress, edtMemo;
-    TextView tvNamecardNo, tvGroupName;
+    TextView edtName, edtJobPosition, edtCompany, edtDept, edtMobile, edtTel, edtFax, edtEmail;
+    TextView edtAddress, edtMemo, tvGroupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,7 @@ public class DetailViewActivity extends AppCompatActivity {
 
     private void addListener(){
 
-        btnBack = findViewById(R.id.detail_btn_delete);
+        btnBack = findViewById(R.id.detail_btn_back);
         btnDelete = findViewById(R.id.detail_btn_delete);
         btnUpdate = findViewById(R.id.detail_btn_update);
 
@@ -126,6 +125,7 @@ public class DetailViewActivity extends AppCompatActivity {
 
             switch (v.getId()){
                 case R.id.detail_btn_back:
+                    finish();
                     break;
                 case R.id.detail_btn_delete:
                     new AlertDialog.Builder(DetailViewActivity.this)
@@ -152,6 +152,25 @@ public class DetailViewActivity extends AppCompatActivity {
                             .show();
                     break;
                 case R.id.detail_btn_update:
+
+                    Intent intent = null;
+                    intent = new Intent(DetailViewActivity.this, UpdateNameCardActivity.class);
+                    intent.putExtra("macIP", macIP);
+                    intent.putExtra("namecardNo", namecardNo);
+                    intent.putExtra("groupNo", groupNo);
+                    intent.putExtra("namecardFilePath", eNamecardFilePath);
+                    intent.putExtra("name", eName);
+                    intent.putExtra("company", eCompany);
+                    intent.putExtra("dept", eDept);
+                    intent.putExtra("jobPosition", eJobPosition);
+                    intent.putExtra("mobile", eMobile);
+                    intent.putExtra("tel", eTel);
+                    intent.putExtra("fax", eFax);
+                    intent.putExtra("email", eEmail);
+                    intent.putExtra("address", eAddress);
+                    intent.putExtra("memo", eMemo);
+                    intent.putExtra("groupName", eGroupName);
+                    startActivity(intent);
                     break;
             }
         }

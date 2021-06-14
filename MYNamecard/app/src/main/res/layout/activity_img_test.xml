@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <SurfaceView
+            android:id="@+id/surface_view"
+            android:layout_height="500dp"
+            android:layout_width="match_parent"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:layout_height="500dp"
+            android:layout_width="match_parent"
+            android:visibility="invisible"
+            android:id="@+id/image_view" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Camera"
+        />
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        />
+
+</LinearLayout>
