@@ -45,7 +45,7 @@ public class imgTest extends AppCompatActivity {
     ImageView view;
     SurfaceView surface;
     Button btnCapture, btnSave;
-    File saveFile = new File("http://192.168.219.105:8080/first/img01.jpg");
+    File saveFile = new File("/Library/Tomcat/webapps/ROOT/first/img/img01.jpg");
     Bitmap bitmap;
 
 
@@ -57,6 +57,7 @@ public class imgTest extends AppCompatActivity {
         mImage = findViewById(R.id.image_view);
         surface = findViewById(R.id.surface_view);
         btnCapture = findViewById(R.id.btnCapture);
+        btnSave = findViewById(R.id.btnSave);
 
         btnCapture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +65,13 @@ public class imgTest extends AppCompatActivity {
                 mShutterListener.onShutter();
             }
         });
+        btnSave.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         SurfaceHolder holder = surface.getHolder();
         view = findViewById(R.id.image_view);
@@ -185,7 +193,7 @@ public class imgTest extends AppCompatActivity {
 
     public void doFileUpload(){
         try {
-            URL url = new URL("http://192.168.219.105:8080/first/imageTest.jsp");
+            URL url = new URL("http://192.168.219.105:8080/first/multipartRequest.jsp");
             Log.v("CameraTest", "url : " + url);
             String lineEnd = "\r\n";
             String twoHyphens = "--";

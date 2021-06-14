@@ -98,7 +98,7 @@ public class InsertNameCardActivity extends AppCompatActivity {
                         String result2 = connectInsertData2();
 
                         if(result2.equals("1")){
-                            Toast.makeText(InsertNameCardActivity.this, eName + "님의 정보가 등되었습니다.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(InsertNameCardActivity.this, eName + "님의 정보가 등록되었습니다.", Toast.LENGTH_LONG).show();
                         }else{
                             Toast.makeText(InsertNameCardActivity.this, "등록에 실패했습니다.", Toast.LENGTH_LONG).show();
                             Log.v("insert", "inser2");

@@ -142,7 +142,7 @@ public class DetailViewActivity extends AppCompatActivity {
                                     String result = connectDelete();
 
                                     if(result.equals("1")){
-                                        Toast.makeText(DetailViewActivity.this, eName + "님의 정보가 삭제되었습니다.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(DetailViewActivity.this, eName + "님의 정보가 휴지통으로 이동되었습니다.", Toast.LENGTH_LONG).show();
                                     }else{
                                         Toast.makeText(DetailViewActivity.this, "삭제에 실패했습니다.", Toast.LENGTH_LONG).show();
                                     }

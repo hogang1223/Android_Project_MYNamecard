@@ -245,14 +245,17 @@ public class NameCardAdapter extends RecyclerView.Adapter<NameCardAdapter.ViewHo
 
     @Override
     public void onItemSwipe(int position) {
+        String swipeName = data.get(position).getName();
+        int namecardNo = data.get(position).getNamecardNo();
+
         data.remove(position);
         notifyItemRemoved(position);
 
-        String result = connectFavoriteData(data.get(position).getNamecardNo());
+        String result = connectFavoriteData(namecardNo);
 
         if(result.equals("1")){
             notifyItemRemoved(position);
-            Toast.makeText(context, "즐겨찾기에 등록되었습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, swipeName+"님이 즐겨찾기에 등록되었습니다.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "즐겨찾기 등록에 실패 하였습니다.", Toast.LENGTH_SHORT).show();
         }

@@ -135,14 +135,16 @@ public class ViewHolder extends RecyclerView.ViewHolder{
 
     @Override
     public void onItemSwipe(int position) {
+        String swipeName = data.get(position).getName();
+        int namecardNo = data.get(position).getNamecardNo();
+
         data.remove(position);
         notifyItemRemoved(position);
-
-        String result = connectTrashCanData(data.get(position).getNamecardNo());
+        String result = connectTrashCanData(namecardNo);
 
         if(result.equals("1")){
             notifyItemRemoved(position);
-            Toast.makeText(context, data.get(position).getName()+"님이 즐겨찾기에서 해제되었습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, swipeName+"님이 즐겨찾기에서 해제되었습니다.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "즐겨찾기 해제에 실패 하였습니다.", Toast.LENGTH_SHORT).show();
         }

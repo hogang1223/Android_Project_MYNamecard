@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aoslec.mynamecard.Activity.DetailViewActivity;
+import com.aoslec.mynamecard.Activity.TrashCanDetailViewActivity;
 import com.aoslec.mynamecard.Bean.NameCard;
 import com.aoslec.mynamecard.NetworkTask.NetworkTask;
 import com.aoslec.mynamecard.R;
@@ -60,7 +61,7 @@ public class TrashCanAdapter extends RecyclerView.Adapter<TrashCanAdapter.ViewHo
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION){
-                        intent = new Intent(v.getContext(), DetailViewActivity.class);
+                        intent = new Intent(v.getContext(), TrashCanDetailViewActivity.class);
 
                         intent.putExtra("macIP", macIP);
                         intent.putExtra("namecardNo", data.get(position).getNamecardNo());
@@ -134,13 +135,17 @@ public class TrashCanAdapter extends RecyclerView.Adapter<TrashCanAdapter.ViewHo
 
     @Override
     public void onItemSwipe(int position) {
+        String swipeName = data.get(position).getName();
+        int namecardNo = data.get(position).getNamecardNo();
+
         data.remove(position);
         notifyItemRemoved(position);
-        String result = connectTrashCanData(data.get(position).getNamecardNo());
+
+        String result = connectTrashCanData(namecardNo);
 
         if(result.equals("1")){
             notifyItemRemoved(position);
-            Toast.makeText(context, data.get(position).getName()+"님의 정보가 복구되었습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, swipeName +"님의 정보가 복구되었습니다.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "복구에 실패 하였습니다.", Toast.LENGTH_SHORT).show();
         }

@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,7 +35,7 @@ public class TrashCanActivity extends AppCompatActivity {
     ArrayList<NameCard> nameCards;
     TrashCanAdapter adapter;
     ItemTouchHelper helper;
-//    Button btnInsert;
+    Button deleteAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,11 @@ public class TrashCanActivity extends AppCompatActivity {
         userid = intent.getStringExtra("userid");
         urlAddr = "http://" + macIP + ":8080/first/namecard_query_trashcan.jsp?userid=" + userid;
 
+        deleteAll = findViewById(R.id.delete_all);
         recyclerView = findViewById(R.id.trash_recyclerView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-//
-//        btnInsert.setOnClickListener(onClickListener);
+        deleteAll.setOnClickListener(onClickListener);
     }
 
     @Override
@@ -74,19 +76,42 @@ public class TrashCanActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-//
-//    View.OnClickListener onClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            Intent intent = null;
-//
-//            // insert namecard
-//            intent = new Intent(TrashCanActivity.this, InsertNameCardActivity.class);
-//            intent.putExtra("macIP", macIP);
-//            intent.putExtra("userid", userid);
-//            startActivity(intent);
-//        }
-//    };
+
+    // delete All
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            new AlertDialog.Builder(TrashCanActivity.this)
+                    .setTitle("휴지통 비우기")
+                    .setMessage("휴지통을 비우시겠습니까?")
+                    .setCancelable(false)
+                    .setNegativeButton("취소", null)
+                    .setPositiveButton("비우기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            connectDelete();
+                            String result = connectDelete();
+                                Toast.makeText(TrashCanActivity.this, "휴지통을 말끔히 비웠습니다.", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    })
+                    .show();
+        }
+    };
+
+    private String connectDelete(){
+        urlAddr = "http://" + macIP + ":8080/first/namecardTrashCan_Delete_All.jsp?userid=" + userid;
+        String result = null;
+        try {
+            NetworkTask networkTask = new NetworkTask(TrashCanActivity.this, urlAddr, "delete");
+            Object obj = networkTask.execute().get();
+            result = (String) obj;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
